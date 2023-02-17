@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Regra</th>
+                        <th scope="col">Função</th>
                         <th scope="col">Nome legível</th>
                         <th scope="col">Descrição</th>
                         <th scope="col" class="text-center">Ações disponíveis</th>
@@ -29,7 +29,7 @@
                                 <div class="d-grid gap-2 d-md-block">
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('roles.show', $role->id) }}"><i
-                                                class="icon-sm text-white" data-feather="eye"></i>Ver regra</a>
+                                                class="icon-sm text-white" data-feather="eye"></i>Dados gerais</a>
                                         <a class="btn btn-primary btn-sm"
                                             href="{{ route('roles.edit', $role->id) }}"><i
                                                 class="icon-sm text-white" data-feather="edit"></i>Editar</a>

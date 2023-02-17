@@ -13,33 +13,22 @@
     <main class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold text-white" href="#">Premissões</a>
+                <a class="navbar-brand fw-bold text-white" href="#">Laratrust</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Regras
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"  href="{{ route('roles.create') }}">Criar</a></li>
-                                <li><a class="dropdown-item"  href="{{ route('roles.index') }}" >Listagem</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-white" href="{{ route('roles.index') }}">Funções</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Permissões
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"  href="{{ route('permissions.create') }}">Criar</a></li>
-                                <li><a class="dropdown-item"  href="{{ route('permissions.index') }}" >Listagem</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-white" href="{{ route('permissions.index') }}">Permissões</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-white" href="{{ route('permissions-roles.create') }}">Vincular</a>
+                        </li>                       
                     </ul>
                 </div>
             </div>

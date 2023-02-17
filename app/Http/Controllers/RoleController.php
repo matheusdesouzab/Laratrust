@@ -53,7 +53,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.show')->with(['role' => $role, 'permissions' => $role->permissions]);
     }
 
     /**
