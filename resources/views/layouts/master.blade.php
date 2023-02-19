@@ -62,6 +62,22 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="mb-2">
+                            <button class="btn btn-toggle rounded-2 collapsed w-100 text-start fw-semibold"
+                                data-bs-toggle="collapse" data-bs-target="#staffs-collapse" aria-expanded="true">
+                                <i class="bi bi-caret-right"></i> Funcionários
+                            </button>
+                            <div class="collapse mb-3 p-3 mt-2 rounded-2 bg-white border" id="staffs-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="{{ route('users.create') }}"
+                                            class="link-dark text-decoration-none rounded fw-semibold d-block p-2 mb-2 bg-white"><i
+                                                class="bi bi-plus"></i> Criar funcionário</a></li>
+                                    <li><a href="{{ route('users.index') }}"
+                                            class="link-dark text-decoration-none rounded fw-semibold d-block p-2 bg-white"><i
+                                                class="bi bi-list"></i> Listagem</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
