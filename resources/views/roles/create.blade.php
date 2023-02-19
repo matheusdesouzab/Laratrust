@@ -18,20 +18,21 @@
                     </ul>
                 </div>
             @endif
-
             <form class="row g-3 py-2" method="POST" action="{{ route('roles.store') }}">
                 @csrf
                 <div class="col-md-6">
                     <label for="role" class="form-label fw-bold">Nome da função:</label>
-                    <input type="text" class="form-control" id="role" name="name">
+                    <input type="text" class="form-control" id="role" name="name" value="{{ @old('name') }}">
                 </div>
                 <div class="col-md-6">
                     <label for="displayName" class="form-label fw-bold">Nome legível da função:</label>
-                    <input type="text" class="form-control" id="displayName" name="display_name">
+                    <input type="text" class="form-control" id="displayName" name="display_name"
+                        value="{{ @old('display_name') }}">
                 </div>
                 <div class="col-12">
                     <label for="description" class="form-label fw-bold">Descrição da função:</label>
-                    <input type="text" class="form-control" id="description" name="description">
+                    <input type="text" class="form-control" id="description" name="description"
+                        value="{{ @old('description') }}">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-success fw-bold">Criar função</button>
