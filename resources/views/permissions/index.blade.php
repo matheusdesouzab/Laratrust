@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="col-lg-10 mx-auto mt-5">
+    <div class="col-lg-11 mx-auto mt-5">
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="">Listagem de permissões</h3>
-                <a href="{{ route('permissions.create') }}" class="btn btn-success me-2">Nova</a>
+                <h4 class="fw-bold mb-0">Listagem de permissões</h4>
+                <a href="{{ route('permissions.create') }}" class="btn btn-primary me-2 fw-bold">Nova</a>
             </div>    
             <hr>
             <table class="table align-middle">
@@ -27,9 +27,6 @@
                             <td>{{ $permission->description }} </td>
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-block">
-                                        <a class="btn btn-success btn-sm"
-                                            href="{{ route('permissions.show', $permission->id) }}"><i
-                                                class="icon-sm text-white" data-feather="eye"></i>Dados gerais</a>
                                         <a class="btn btn-primary btn-sm"
                                             href="{{ route('permissions.edit', $permission->id) }}"><i
                                                 class="icon-sm text-white" data-feather="edit"></i>Editar</a>

@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="col-lg-10 mx-auto mt-5">
+    <div class="col-lg-11 mx-auto mt-5">
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="">Listagem de funções</h3>
-                <a href="{{ route('roles.create') }}" class="btn btn-success me-2">Nova</a>
-            </div>    
+                <h4 class="fw-bold mb-0">Listagem de funções</h4>
+                <a href="{{ route('roles.create') }}" class="btn btn-primary me-2 fw-bold">Nova</a>
+            </div>  
             <hr>
             <table class="table align-middle">
                 <thead>

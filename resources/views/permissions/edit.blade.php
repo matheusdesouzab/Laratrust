@@ -4,8 +4,8 @@
     <div class="col-lg-10 mx-auto mt-5">
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="">Editar regra - {{ $permission->display_name }}</h3>
-                <a href="{{ route('permissions.index') }}" class="btn btn-primary me-2">Voltar</a>
+                <h4 class="fw-bold mb-0">Editar permissão - {{ $permission->display_name }}</h4>
+                <a href="{{ route('permissions.index') }}" class="btn btn-primary me-2 fw-bold">Voltar</a>
             </div>    
             <hr>
             <form class="row g-3 p-4" method="POST" action="{{ route('permissions.update', $permission->id) }}">

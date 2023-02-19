@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="col-lg-10 mx-auto mt-5">
+    <div class="col-lg-11 mx-auto mt-5">
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="">Permissões do {{ $role->display_name }}</h3>
-                <a href="{{ route('roles.index') }}" class="btn btn-primary me-2">Voltar</a>
-            </div>  
+                <h4 class="fw-bold mb-0">Permissões do {{ $role->display_name }}</h4>
+                <a href="{{ route('roles.create') }}" class="btn btn-primary me-2 fw-bold">Nova</a>
+            </div>   
             <hr>
             <table class="table align-middle">
                 <thead>
@@ -28,9 +28,6 @@
                             <td class="text-center">
                                 <form action="{{ route('permissions-roles.destroy', [$role->id, $permission->id]) }}" method="POST">
                                 <div class="d-grid gap-2 d-md-block">
-                                        <a class="btn btn-success btn-sm"
-                                            href="{{ route('permissions.show', $permission->id) }}"><i
-                                                class="icon-sm text-white" data-feather="eye"></i>Ver regra</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"><i
