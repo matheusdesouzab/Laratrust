@@ -4,26 +4,28 @@
     <div class="col-lg-10 mx-auto mt-5">
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="">Criar premissão</h3>
-                <a href="{{ route('permissions.index') }}" class="btn btn-success me-2">Ver premissões</a>
-            </div>    
+                <h4 class="fw-bold mb-0">Criar permissão</h4>
+                <a href="{{ route('permissions.index') }}" class="btn btn-primary me-2 fw-bold">Listagem</a>
+            </div>
             <hr>
-            <form class="row g-3 p-4" method="POST" action="{{ route('permissions.store') }}">
+            <form class="row g-3 py-2" method="POST" action="{{ route('permissions.store') }}">
                 @csrf
                 <div class="col-md-6">
                     <label for="role" class="form-label fw-bold">Nome da permissão:</label>
-                    <input type="text" class="form-control" id="role" name="name">
+                    <input type="text" class="form-control" id="role" name="name" value="{{ @old('name') }}">
                 </div>
                 <div class="col-md-6">
                     <label for="displayName" class="form-label fw-bold">Nome legível da permissão</label>
-                    <input type="text" class="form-control" id="displayName" name="display_name">
+                    <input type="text" class="form-control" id="displayName" name="display_name"
+                        value="{{ @old('display_name') }}">
                 </div>
                 <div class="col-12">
                     <label for="description" class="form-label fw-bold">Descrição da permissão:</label>
-                    <input type="text" class="form-control" id="description" name="description">
+                    <input type="text" class="form-control" id="description" name="description"
+                        value="{{ @old('description') }}">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Criar permissão</button>
+                    <button type="submit" class="btn btn-success fw-bold">Criar permissão</button>
                 </div>
             </form>
         </div>
