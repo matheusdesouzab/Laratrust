@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PermissionStoreRequest;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionStoreRequest $request)
     {
         Permission::create([
             'name' => $request->name,
