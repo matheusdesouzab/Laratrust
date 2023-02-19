@@ -13,7 +13,7 @@ class RoleStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class RoleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:roles,name'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'O nome não pode ser vazio',
+            'name.unique' => 'Esse nome já está vinculado a uma outra função'
         ];
     }
 }
