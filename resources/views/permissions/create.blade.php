@@ -8,6 +8,16 @@
                 <a href="{{ route('permissions.index') }}" class="btn btn-primary me-2 fw-bold">Listagem</a>
             </div>
             <hr>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Ops!</strong> Você precisa corrigir os seguintes erros<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form class="row g-3 py-2" method="POST" action="{{ route('permissions.store') }}">
                 @csrf
                 <div class="col-md-6">
