@@ -32,7 +32,7 @@ class RoleStoreRequest extends FormRequest
     {
         return [
             'name.required' => 'O nome não pode ser vazio',
-            'name.unique' => 'Esse nome já está vinculado a uma outra função'
+            'name.unique' => 'o nome da função já está vinculado a uma outra função'
         ];
     }
 }
