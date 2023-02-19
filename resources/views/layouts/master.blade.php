@@ -29,6 +29,15 @@
                         <li class="nav-item">
                             <a class="nav-link fw-bold text-white" href="{{ route('permissions-roles.create') }}">Vincular</a>
                         </li>                       
+                        <li class="nav-item dropdown me-4">
+                            <a class="nav-link fw-bold text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              {{ Auth()->user()->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{{ route('users.index') }}">Listagem</a></li>
+                              <li><a class="dropdown-item" href="{{ route('users.create') }}">Criar</a></li>
+                            </ul>
+                          </li>                  
                     </ul>
                 </div>
             </div>

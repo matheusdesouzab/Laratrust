@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('users.index')->with('users' , $users);
     }
 
     /**
@@ -23,7 +26,22 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+
+        return view('users.create')->with('roles', $roles);
+    }
+    
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addRoleCreate()
+    {
+        $user = User::find(Auth()->user()->id);
+        $roles = Role::all();
+
+        return view('users.add-role')->with(['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -34,7 +52,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt('dialhost')
+        ]);
+
+        $this->addRole($user->id, $request->role_id);
+
+        return redirect('users');
     }
 
     /**
@@ -45,7 +71,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $permissions = $user->allPermissions();
+
+        return view('users.show')->with(['user' => $user, 'permissions' => $permissions]);
     }
 
     /**
@@ -56,7 +85,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit')->with(['user' => $user]);
     }
 
     /**
@@ -71,14 +101,8 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function addRole($user_id, $role_id){
+        $user = User::find($user_id);
+        return $user->attachRole($role_id);
     }
 }
