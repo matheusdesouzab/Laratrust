@@ -15,7 +15,9 @@
                         <th scope="col">Funções</th>
                         <th scope="col">Nome legível</th>
                         <th scope="col">Descrição</th>
-                        <th scope="col" class="text-center">Ações</th>
+                        @role('admin')
+                            <th scope="col" class="text-center">Ações</th>
+                        @endrole
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +27,7 @@
                             <td>{{ $role_user->name }} </td>
                             <td>{{ $role_user->display_name }} </td>
                             <td>{{ $role_user->description}} </td>
+                            @role('admin')
                             <td class="text-center">
                                 <form action="{{ route('users.remove-rule-user.destroy', [$role_user->id, $user->id]) }}" method="POST">
                                 <div class="d-grid gap-2 d-md-block">
@@ -36,6 +39,7 @@
                                 </div>
                                 </form>
                             </td>
+                            @endrole
                         </tr>
                     @endforeach
                 </tbody>
@@ -70,6 +74,8 @@
             </table>
         </div>
 
+        @role('admin')
+
         <div class="card p-4 mt-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold mb-0">Adicionar nova função a {{ $user->name }}</h4>
@@ -91,6 +97,7 @@
                     <button type="submit" class="btn btn-success fw-bold">Adicionar função</button>
                 </div>
             </form>
+            @endrole
         </div>
         </div>
     </div>

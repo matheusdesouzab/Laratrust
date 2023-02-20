@@ -5,7 +5,9 @@
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold mb-0">Listagem de permissões</h4>
-                <a href="{{ route('permissions.create') }}" class="btn btn-primary me-2 fw-bold">Nova</a>
+                @role('admin')
+                    <a href="{{ route('permissions.create') }}" class="btn btn-primary me-2 fw-bold">Nova</a>
+                @endrole
             </div>    
             <hr>
             <table class="table align-middle">
@@ -15,7 +17,9 @@
                         <th scope="col">Permissão</th>
                         <th scope="col">Nome legível</th>
                         <th scope="col">Descrição</th>
-                        <th scope="col" class="text-center">Ações disponíveis</th>
+                        @role('admin')
+                            <th scope="col" class="text-center">Ações disponíveis</th>
+                        @endrole
                     </tr>
                 </thead>
                 <tbody>
@@ -25,14 +29,15 @@
                             <td>{{ $permission->name }} </td>
                             <td>{{ $permission->display_name }} </td>
                             <td>{{ $permission->description }} </td>
-                            <td class="text-center">
-                                <div class="d-grid gap-2 d-md-block">
-                                        <a class="btn btn-primary btn-sm"
-                                            href="{{ route('permissions.edit', $permission->id) }}"><i
-                                                class="icon-sm text-white" data-feather="edit"></i>Editar</a>
-                                </div>
-                            </td>
-
+                            @role('admin')
+                                <td class="text-center">
+                                    <div class="d-grid gap-2 d-md-block">
+                                            <a class="btn btn-primary btn-sm"
+                                                href="{{ route('permissions.edit', $permission->id) }}"><i
+                                                    class="icon-sm text-white" data-feather="edit"></i>Editar</a>
+                                    </div>
+                                </td>
+                            @endrole
                         </tr>
                     @endforeach
                 </tbody>

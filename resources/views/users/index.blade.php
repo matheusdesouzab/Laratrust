@@ -33,9 +33,11 @@
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('users.show', $user->id) }}"><i
                                                 class="icon-sm text-white" data-feather="eye"></i>Dados gerais</a>
+                                                @role('admin')
                                         <a class="btn btn-primary btn-sm"
                                             href="{{ route('users.edit', $user->id) }}"><i
                                                 class="icon-sm text-white" data-feather="edit"></i>Editar</a>
+                                                @endrole
                                 </div>
                             </td>
                             @endpermission
