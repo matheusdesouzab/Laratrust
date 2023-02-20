@@ -18,6 +18,8 @@
                             <option value="{{ $role->id }}">{{ $role->display_name }} </option>
                         @endforeach
                     </select>
+                    {{ $user }}
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Vincular  nova função</button>

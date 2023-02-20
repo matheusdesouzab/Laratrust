@@ -4,11 +4,11 @@
     <div class="col-lg-10 mx-auto mt-5">
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="">Criar funcionário</h3>
-                <a href="{{ route('users.index') }}" class="btn btn-success me-2">Listagem</a>
+                <h4 class="fw-bold mb-0">Criar funcionário</h4>
+                <a href="{{ route('users.index') }}" class="btn btn-primary me-2 fw-bold">Listagem</a>
             </div>
             <hr>
-            <form class="row g-3 p-4" method="POST" action="{{ route('users.store') }}">
+            <form class="row g-3 py-2" method="POST" action="{{ route('users.store') }}">
                 @csrf
                 <div class="col-md-4">
                     <label for="name" class="form-label fw-bold">Nome do usuário</label>
@@ -28,7 +28,7 @@
                     </select>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Criar usuário</button>
+                    <button type="submit" class="btn btn-success fw-bold">Criar usuário</button>
                 </div>
             </form>
         </div>

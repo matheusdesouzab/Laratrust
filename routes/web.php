@@ -36,6 +36,7 @@ Route::middleware([config('fortify.auth_middleware', 'auth') . ':' . config('for
     });
 
     Route::group(['prefix' => 'users'], function () {
+        //Route::controller(UserController::class)->middleware('role:admin')->group(function () {
         Route::controller(UserController::class)->group(function () {
             Route::get('', 'index')->name('users.index');
             Route::get('create', 'create')->name('users.create');
@@ -43,6 +44,8 @@ Route::middleware([config('fortify.auth_middleware', 'auth') . ':' . config('for
             Route::get('add-role-create', 'addRoleCreate')->name('users.add-role-create');
             Route::get('{id}', 'show')->name('users.show');
             Route::post('', 'store')->name('users.store');
+            Route::post('add-role', 'addRole')->name('users.add-role');
+            Route::delete('remove-role-user/{role_id}/{user_id}', 'removeRole')->name('users.remove-rule-user.destroy');
             Route::put('', 'update')->name('users.update');
         });
     });

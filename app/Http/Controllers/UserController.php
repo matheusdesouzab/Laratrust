@@ -71,10 +71,23 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $permissions = $user->allPermissions();
+        $user = User::find(Auth()->user()->id);
 
-        return view('users.show')->with(['user' => $user, 'permissions' => $permissions]);
+        if(!$user->hasPermission('show-user')){
+            return redirect('users');
+        }
+        
+        $user = User::find($id);
+        $roles = Role::all();
+        $permissions = $user->allPermissions();
+        $rolesUser = $user->roles;
+
+        return view('users.show')->with([
+            'user' => $user, 
+            'permissions' => $permissions, 
+            'roles' => $roles, 
+            'role_users' => $rolesUser
+        ]);
     }
 
     /**
@@ -101,8 +114,23 @@ class UserController extends Controller
         //
     }
 
-    public function addRole($user_id, $role_id){
+    public function addRole(Request $request){
+        $user = User::find($request->user_id);
+        $user->attachRole($request->role_id);
+
+        return redirect('users/'.$user->id);
+    }
+
+    public function removeRole($role_id, $user_id){
         $user = User::find($user_id);
-        return $user->attachRole($role_id);
+        $user->detachRole($role_id);
+
+        $currentUser = User::find(Auth()->user()->id);
+
+        if(!$currentUser->hasPermission('show-user')){
+            return redirect('users');
+        }
+
+        return redirect('users/'.$user->id);
     }
 }
