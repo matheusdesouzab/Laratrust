@@ -36,8 +36,8 @@ Route::middleware([config('fortify.auth_middleware', 'auth') . ':' . config('for
     });
 
     Route::group(['prefix' => 'users'], function () {
-        //Route::controller(UserController::class)->middleware('role:admin')->group(function () {
-        Route::controller(UserController::class)->group(function () {
+        Route::controller(UserController::class)->middleware('role:admin')->group(function () {
+        //Route::controller(UserController::class)->group(function () {
             Route::get('', 'index')->name('users.index');
             Route::get('create', 'create')->name('users.create');
             Route::get('{id}/edit', 'edit')->name('users.edit');
