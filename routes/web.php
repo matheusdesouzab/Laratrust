@@ -41,7 +41,6 @@ Route::middleware([config('fortify.auth_middleware', 'auth') . ':' . config('for
             Route::get('', 'index')->name('users.index');
             Route::get('create', 'create')->name('users.create');
             Route::get('{id}/edit', 'edit')->name('users.edit');
-            Route::get('add-role-create', 'addRoleCreate')->name('users.add-role-create');
             Route::get('{id}', 'show')->name('users.show');
             Route::post('', 'store')->name('users.store');
             Route::post('add-role', 'addRole')->name('users.add-role');

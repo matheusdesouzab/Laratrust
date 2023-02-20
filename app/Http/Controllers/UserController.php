@@ -30,19 +30,6 @@ class UserController extends Controller
 
         return view('users.create')->with('roles', $roles);
     }
-    
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function addRoleCreate()
-    {
-        $user = User::find(Auth()->user()->id);
-        $roles = Role::all();
-
-        return view('users.add-role')->with(['user' => $user, 'roles' => $roles]);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -124,12 +111,6 @@ class UserController extends Controller
     public function removeRole($role_id, $user_id){
         $user = User::find($user_id);
         $user->detachRole($role_id);
-
-        $currentUser = User::find(Auth()->user()->id);
-
-        if(!$currentUser->hasPermission('show-user')){
-            return redirect('users');
-        }
 
         return redirect('users/'.$user->id);
     }
