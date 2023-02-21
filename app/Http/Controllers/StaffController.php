@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Creativeorange\Gravatar\Facades\Gravatar;
 
 class StaffController extends Controller
 {
@@ -38,6 +39,8 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        dd(Gravatar::fallback('http://urlto.example.com/avatar.jpg')->get('matheus@gmail.com'));
+
         $staff = Staff::create([
             'name' => $request->name,
             'email' => $request->email,
