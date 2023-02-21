@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Staff;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index')->with('users' , $users);
+        $staff = Staff::all();
+        return view('users.index')->with('users' , $staff);
     }
 
     /**
@@ -38,13 +38,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
+        $staff = Staff::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt('dialhost')
         ]);
 
-        $user->detachRole($request->role_id);
+        $staff->detachRole($request->role_id);
 
         return redirect('users');
     }
@@ -57,19 +57,19 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find(Auth()->user()->id);
+        $staff = Staff::find(Auth()->user()->id);
 
-        if(!$user->hasPermission('show-user')){
+        if(!$staff->hasPermission('show-user')){
             return redirect('users');
         }
         
-        $user = User::find($id);
+        $staff = Staff::find($id);
         $roles = Role::all();
-        $permissions = $user->allPermissions();
-        $rolesUser = $user->roles;
+        $permissions = $staff->allPermissions();
+        $rolesUser = $staff->roles;
 
         return view('users.show')->with([
-            'user' => $user, 
+            'user' => $staff, 
             'permissions' => $permissions, 
             'roles' => $roles, 
             'role_users' => $rolesUser
@@ -84,7 +84,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = Staff::find($id);
         return view('users.edit')->with(['user' => $user]);
     }
 
@@ -101,14 +101,14 @@ class UserController extends Controller
     }
 
     public function addRole(Request $request){
-        $user = User::find($request->user_id);
+        $user = Staff::find($request->user_id);
         $user->attachRole($request->role_id);
 
         return redirect('users/'.$user->id);
     }
 
     public function removeRole($role_id, $user_id){
-        $user = User::find($user_id);
+        $user = Staff::find($user_id);
         $user->detachRole($role_id);
 
         return redirect('users/'.$user->id);

@@ -20,7 +20,7 @@ use Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController;
 use Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 
-Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
+Route::group(['middleware' => config('fortify.middleware', ['staff'])], function () {
     $enableViews = config('fortify.views', true);
 
     // Authentication...

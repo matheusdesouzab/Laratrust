@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PermissionRoleController;
@@ -36,7 +36,7 @@ Route::middleware([config('fortify.auth_middleware', 'auth') . ':' . config('for
     });
 
     Route::group(['prefix' => 'users'], function () {
-        Route::controller(UserController::class)->middleware('role:admin')->group(function () {
+        Route::controller(StaffController::class)->middleware('role:admin')->group(function () {
         //Route::controller(UserController::class)->group(function () {
             Route::get('', 'index')->name('users.index');
             Route::get('create', 'create')->name('users.create');

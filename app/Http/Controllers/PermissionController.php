@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Staff;
 use App\Http\Requests\PermissionStoreRequest;
 use App\Models\Permission;
 use Illuminate\Http\Request;
@@ -27,8 +27,8 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        $user = User::find(Auth()->user()->id);
-        if (!$user->hasRole('admin')) {
+        $staff = Staff::find(Auth()->user()->id);
+        if (!$staff->hasRole('admin')) {
             return redirect('permissions');
         }
 
@@ -71,8 +71,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find(Auth()->user()->id);
-        if (!$user->hasRole('admin')) {
+        $staff = Staff::find(Auth()->user()->id);
+        if (!$staff->hasRole('admin')) {
             return redirect('permissions');
         }
 
@@ -90,9 +90,9 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find(Auth()->user()->id);
+        $staff = Staff::find(Auth()->user()->id);
 
-        if (!$user->hasRole('admin')) {
+        if (!$staff->hasRole('admin')) {
             return redirect('permissions');
         }
 
