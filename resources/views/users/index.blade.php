@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Avatar</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
                         @permission('show-user')
@@ -25,17 +26,18 @@
                     @foreach ($users as $user)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $user->name }} </td>
-                            <td>{{ $user->email}} </td>
+                            <td><img src="{{ $user['avatar'] }}" width="35px" style="border-radius: 50%" /></td>
+                            <td>{{ $user['name']}} </td>
+                            <td>{{ $user['email']}} </td>
                             @permission('show-user')
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-block">
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('users.show', $user->id) }}"><i
+                                            href="{{ route('users.show', $user['id']) }}"><i
                                                 class="icon-sm text-white" data-feather="eye"></i>Dados gerais</a>
                                                 @role('admin')
                                         <a class="btn btn-primary btn-sm"
-                                            href="{{ route('users.edit', $user->id) }}"><i
+                                            href="{{ route('users.edit', $user['id']) }}"><i
                                                 class="icon-sm text-white" data-feather="edit"></i>Editar</a>
                                                 @endrole
                                 </div>

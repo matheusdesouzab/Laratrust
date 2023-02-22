@@ -38,10 +38,10 @@ return [
     'chars' => 2,
 
     // font size
-    'fontSize' => 48,
+    'fontSize' => 38,
 
     // convert initial letter in uppercase
-    'uppercase' => false,
+    'uppercase' => true,
 
     // Right to Left (RTL)
     'rtl' => false,

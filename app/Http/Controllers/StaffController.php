@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Creativeorange\Gravatar\Facades\Gravatar;
+use App\Http\Resources\StaffResource;
 
 class StaffController extends Controller
 {
@@ -16,8 +16,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staff = Staff::all();
-        return view('users.index')->with('users' , $staff);
+        $collection = StaffResource::collection(Staff::all())->toArray(request());
+
+        return view('users.index')->with('users' , $collection);
     }
 
     /**
@@ -39,7 +40,11 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        dd(Gravatar::fallback('http://urlto.example.com/avatar.jpg')->get('matheus@gmail.com'));
+        //dd(Gravatar::fallback('http://urlto.example.com/avatar.jpg')->get('matheus@gmail.com'));
+
+        // $avatar = \Avatar::create('John Doe')->toBase64();
+
+        // dd($avatar);
 
         $staff = Staff::create([
             'name' => $request->name,
