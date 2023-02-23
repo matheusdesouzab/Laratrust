@@ -44,7 +44,8 @@ Route::middleware([config('fortify.auth_middleware', 'auth') . ':' . config('for
             Route::post('', 'store')->name('users.store');
             Route::post('add-role', 'addRole')->name('users.add-role');
             Route::delete('remove-role-user/{role_id}/{user_id}', 'removeRole')->name('users.remove-rule-user.destroy');
-            Route::put('', 'update')->name('users.update');
+            Route::put('{id}', 'update')->name('users.update');
+            Route::delete('{id}', 'destroy')->name('users.destroy');
         });
     });
 });

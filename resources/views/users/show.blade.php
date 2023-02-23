@@ -74,9 +74,38 @@
             </table>
         </div>
 
+        <div class="card p-4 mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="fw-bold mb-0">Registro de atividades {{ $user->name }}</h4>
+            </div>
+            <hr>
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Atividade</th>
+                        <th scope="col">Descrição detalhada</th>
+                        <th scope="col">Sujeito</th>
+                        <th class="text-center" scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($activitys as $activity)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $activity->activity }} </td>
+                            <td>{{ $activity->description }} </td>
+                            <td>{{ $activity->subject }} </td>
+                            <td class="text-center">{{ Carbon\Carbon::parse($activity->created_at)->format('d/m/Y') }} </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
         @role('admin')
 
-        <div class="card p-4 mt-4">
+        <div class="card p-4 my-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold mb-0">Adicionar nova função a {{ $user->name }}</h4>
             </div>

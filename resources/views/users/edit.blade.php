@@ -10,6 +10,7 @@
             <hr>
             <form class="row g-3 p-4" method="POST" action="{{ route('users.update', $user->id) }}">
                 @csrf
+                @method('PUT')
                 <div class="col-md-6">
                     <label for="name" class="form-label fw-bold">Nome do usuário</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ @old('name', $user->name) }}">
